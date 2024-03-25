@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>DIS WORKSHOP TABLE GENERATOR</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      background-color: #f2f2f2;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    h1 {
+      color: #333;
+      font-size : 50px;
+    }
+
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      background-color: blue;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+
+    #result {
+      font-size: 24px;
+      font-weight: bold;
+      color: #333;
+    }
+  </style>
+</head>
+<body>
+  <h1 class="heading">WELCOME TO THE WORKSHOP</h1>
+  <p>Click the button to generate your table number</p>
+  <button onclick="generateRandomNumber()">Generate Table Number</button>
+  <p id="result"></p>
+
+  <script>
+    const numCounts = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+
+    function generateRandomNumber() {
+      let randomNumber;
+      let isValidNumber = false;
+
+      while (!isValidNumber) {
+        randomNumber = Math.floor(Math.random() * 10) + 1;
+        if (numCounts[randomNumber - 1] < 7) {
+          isValidNumber = true;
+        }
+      }
+
+      numCounts[randomNumber - 1]++;
+      document.getElementById("result").innerHTML = "Your Table Number is : " + randomNumber;
+    }
+  </script>
+</body>
+</html>
